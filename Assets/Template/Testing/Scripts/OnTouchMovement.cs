@@ -27,6 +27,7 @@ public class OnTouchMovement : MonoBehaviour
         {
             targetPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             targetPosition.z = gameObject.transform.position.z;
+            Debug.Log(targetPosition);
 
             isMoving = true;
             rb.MovePosition(targetPosition);

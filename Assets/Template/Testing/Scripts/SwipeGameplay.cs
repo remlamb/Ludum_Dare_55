@@ -8,7 +8,7 @@ using static UnityEngine.Rendering.DebugUI;
 
 public class SwipeGameplay : MonoBehaviour
 {
-    private InputSwipe playerInput;
+    private InputSwipeMobile playerInput;
 
     [SerializeField] private AudioSource sound;
     [SerializeField] private float xAxisMovement;
@@ -19,7 +19,7 @@ public class SwipeGameplay : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerInput = GetComponent<InputSwipe>();
+        playerInput = GetComponent<InputSwipeMobile>();
         currentTimeScale = Time.timeScale;
         currentPitch = sound.pitch;
     }
