@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 179135185189940292}
   m_Layer: 0
   m_Name: DeamonTest
-  m_TagString: Untagged
+  m_TagString: Demon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

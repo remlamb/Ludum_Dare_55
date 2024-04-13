@@ -20,34 +20,33 @@ public class SummonerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        SpawnOnClick();
     }
 
 
-    void SpawnOnClick()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-            choosenPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            choosenPos.z = gameObject.transform.position.z;
-            Debug.Log("ClickPos:" + choosenPos.x);
+    //void SpawnOnClick()
+    //{
+    //    if (Input.GetMouseButtonDown(0))
+    //    {
+    //        choosenPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+    //        choosenPos.z = gameObject.transform.position.z;
+    //        Debug.Log("ClickPos:" + choosenPos.x);
 
-            //TODO flip Deamon en fonction de sa position sur l ecran
-            if (currentDeamon != null)
-            {
-                Instantiate(currentDeamon, choosenPos, Quaternion.identity);
-            }
-            else
-            {
-                Debug.Log("Take A deamon");
-            }
-        }
-    }
+    //        //TODO flip Deamon en fonction de sa position sur l ecran
+    //        if (currentDeamon != null)
+    //        {
+    //            Instantiate(currentDeamon, choosenPos, Quaternion.identity);
+    //        }
+    //        else
+    //        {
+    //            Debug.Log("Take A deamon");
+    //        }
+    //    }
+    //}
 
 
-    public void ChooseDeamon(int deamon)
-    {
-        currentDeamon = deamons[deamon];
-    }
+    //public void ChooseDeamon(int deamon)
+    //{
+    //    currentDeamon = deamons[deamon];
+    //}
 
 }
