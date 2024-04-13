@@ -74,6 +74,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject[] deamons;
     private GameObject currentDeamon;
 
+    [SerializeField] private GameObject[] playerCatLifes;
+    [SerializeField] private int life;
+
+    private AudioSource source;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -92,6 +97,8 @@ public class PlayerController : MonoBehaviour
         RandomPool(ref monsterInputs);
         RandomPool(ref monster2Inputs);
         RandomPool(ref monster3Inputs);
+
+        source = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -188,7 +195,7 @@ public class PlayerController : MonoBehaviour
                 else if (inputsSummon[0] == monster3Inputs[0] && inputsSummon[1] == monster3Inputs[1] &&
                          inputsSummon[2] == monster3Inputs[2])
                 {
-                    currentDeamon = deamons[1];
+                    currentDeamon = deamons[2];
                     RandomPool(ref monster3Inputs);
                     currentGameState = GameState.Placing;
                 }
@@ -286,6 +293,21 @@ public class PlayerController : MonoBehaviour
             sprite = arrowSprites[3];
         }
         return sprite;
+    }
+
+    public void OnLifeDecrease()
+    {
+        life--;
+        //PLAY SOUND
+        source.Play();
+        foreach (var catlife in playerCatLifes)
+        {
+            catlife.SetActive(false);
+        }
+        for (int i = 0; i < life; i++)
+        {
+            playerCatLifes[i].SetActive(true);
+        }
     }
 
 }

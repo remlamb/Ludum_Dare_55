@@ -13,10 +13,15 @@ public class ProjectileController : MonoBehaviour
     [SerializeField] private GameObject playerGO;
     public bool isMoving = false;
 
+    [SerializeField] private PlayerController playerController;
+
+
+
     // Start is called before the first frame update
     void Start()
     {
         playerGO = GameObject.FindGameObjectWithTag("Player");
+        playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
     }
 
     // Update is called once per frame
@@ -42,6 +47,7 @@ public class ProjectileController : MonoBehaviour
         {
             //TODO OnHit
             Destroy(this.gameObject);
+            playerController.OnLifeDecrease();
         }
     }
 }

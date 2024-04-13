@@ -24,12 +24,23 @@ public class EnemyManager : MonoBehaviour
 
     [SerializeField] private GameObject marker;
     [SerializeField] private GameObject TextTimer;
+
+    [SerializeField] private AudioSource source;
+    [SerializeField] private AudioClip audioCursed;
+
+    [SerializeField] private GameObject OnStartWarning;
+    private bool is10sPlayer = false;
+
+    private float warningTimer;
     // Start is called before the first frame update
     void Start()
     {
         timer = 0.0f;
         timerSetup = 0.0f;
+        warningTimer = 0.0f;
         playerGO = GameObject.FindGameObjectWithTag("Player");
+
+        OnStartWarning.SetActive(true);
     }
 
     // Update is called once per frame
@@ -37,10 +48,27 @@ public class EnemyManager : MonoBehaviour
     {
         timer += Time.deltaTime;
         timerSetup += Time.deltaTime;
+        if (OnStartWarning.activeSelf)
+        {
+            warningTimer += Time.deltaTime;
+        }
+
+        if (warningTimer >= 1.4f)
+        {
+            OnStartWarning.SetActive(false);
+            warningTimer = 0.0f;
+        }
+
         if (timerSetup > setupTime)
         {
             if (timer >= timerBetweenSpawn)
             {
+                source.clip = audioCursed;
+                if (!source.isPlaying)
+                {
+                    source.Play();
+                }
+
                 StartCoroutine(InstantiateNewProjectile());
                 //TODO
                 //currentEnemy.transform.LookAt(playerGO.transform);
@@ -50,7 +78,12 @@ public class EnemyManager : MonoBehaviour
         }
         else
         {
-            TextTimer.GetComponent<TextMeshProUGUI>().text = ((int)(setupTime-timerSetup)).ToString() + "s before a disaster";
+            if(timerSetup > 25.0f && !is10sPlayer)
+            {
+                OnStartWarning.SetActive(true);
+                OnStartWarning.GetComponentInChildren<TextMeshProUGUI>().text = "5s Before Disaster";
+                is10sPlayer = true;
+            }
         }
     }
 
