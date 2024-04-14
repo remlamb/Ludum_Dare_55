@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d1d9224749e1f204cbab7d7ab12d9817
+guid: ae82d1f130113604a8ccc2ba82f5b835
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -123,13 +123,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: IfOnly_note pad_0
+      name: border_0
       rect:
         serializedVersion: 2
-        x: 209
-        y: 229
-        width: 550
-        height: 590
+        x: 14
+        y: 32
+        width: 71
+        height: 25
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,8 +137,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7c4b7af70781e8b43ae06e9c9275daab
-      internalID: 550904181
+      spriteID: 76ad74be8ba812942aa806a6f953dc3b
+      internalID: -432682658
       vertices: []
       indices: 
       edges: []
@@ -146,7 +146,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 014c32c7ea70aae47ba2f2cf81136250
     internalID: 0
     vertices: []
     indices: 
@@ -154,7 +154,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      IfOnly_note pad_0: 550904181
+      border_0: -432682658
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

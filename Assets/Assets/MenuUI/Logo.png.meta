@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d1d9224749e1f204cbab7d7ab12d9817
+guid: 8287d6988bfc6ea48819576537de93ec
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,13 +123,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: IfOnly_note pad_0
+      name: Logo_0
       rect:
         serializedVersion: 2
-        x: 209
-        y: 229
-        width: 550
-        height: 590
+        x: 154
+        y: 384
+        width: 646
+        height: 323
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,8 +137,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7c4b7af70781e8b43ae06e9c9275daab
-      internalID: 550904181
+      spriteID: e2d9f2626388d424f8e0055944adb2f3
+      internalID: 1707797607
       vertices: []
       indices: 
       edges: []
@@ -154,7 +154,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      IfOnly_note pad_0: 550904181
+      Logo_0: 1707797607
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

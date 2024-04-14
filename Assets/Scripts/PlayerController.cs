@@ -86,6 +86,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private GameObject transitionManager;
     [SerializeField] private bool isLastLvl;
+    private Vector3 originalCamPos;
 
     // Start is called before the first frame update
     void Start()
@@ -110,6 +111,7 @@ public class PlayerController : MonoBehaviour
         GameOverUI.SetActive(false);
         isDead = false;
 
+        originalCamPos = Camera.main.transform.position;
     }
 
     // Update is called once per frame
@@ -239,13 +241,13 @@ public class PlayerController : MonoBehaviour
     {
         if (currentGameState == GameState.Placing)
         {
-            if (Input.GetMouseButtonDown(0))
+            //TODO HERE IS THE CHANGE
+            if (Input.GetMouseButtonUp(0))
             {
                 choosenPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 choosenPos.z = gameObject.transform.position.z;
                 //Debug.Log("ClickPos:" + choosenPos.x);
 
-                //TODO flip Deamon en fonction de sa position sur l ecran
                 if (currentDeamon != null)
                 {
                     Instantiate(currentDeamon, choosenPos, Quaternion.identity);
@@ -311,6 +313,7 @@ public class PlayerController : MonoBehaviour
         life--;
         //PLAY SOUND
         source.Play();
+        StartCoroutine(CameraShakeOnHit());
         foreach (var catlife in playerCatLifes)
         {
             catlife.SetActive(false);
@@ -342,7 +345,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            SceneManager.LoadScene("GoodEnding");
+            StartCoroutine(launchGoodEnding());
         }
     }
 
@@ -351,6 +354,42 @@ public class PlayerController : MonoBehaviour
 
         yield return new WaitForSeconds(1.8f);
         SceneManager.LoadScene("MainMenu");
+    }
+
+    IEnumerator launchGoodEnding()
+    {
+        StartCoroutine(CameraShake());
+        yield return new WaitForSeconds(0.8f);
+        SceneManager.LoadScene("GoodEnding");
+    }
+    IEnumerator CameraShake()
+    {
+        float shakeDuration = 0.5f; // Adjust duration as needed
+        float shakeIntensity = 0.08f; // Adjust intensity as needed
+
+        for (int i = 0; i < 32; i++)
+        {
+            Vector2 randomPos = Random.insideUnitCircle * shakeIntensity;
+            Camera.main.transform.position = new Vector3(originalCamPos.x + randomPos.x, originalCamPos.y + randomPos.y, originalCamPos.z);
+            yield return new WaitForSeconds(0.028f);
+        }
+
+        Camera.main.transform.position = originalCamPos;
+    }
+
+    IEnumerator CameraShakeOnHit()
+    {
+        float shakeDuration = 0.5f; // Adjust duration as needed
+        float shakeIntensity = 0.08f; // Adjust intensity as needed
+
+        for (int i = 0; i < 8; i++)
+        {
+            Vector2 randomPos = Random.insideUnitCircle * shakeIntensity;
+            Camera.main.transform.position = new Vector3(originalCamPos.x + randomPos.x, originalCamPos.y + randomPos.y, originalCamPos.z);
+            yield return new WaitForSeconds(0.028f);
+        }
+
+        Camera.main.transform.position = originalCamPos;
     }
 
 }

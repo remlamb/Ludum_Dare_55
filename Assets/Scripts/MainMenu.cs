@@ -27,6 +27,11 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene("MainMenu");
     }
 
+    public void LauchTuto()
+    {
+        SceneManager.LoadScene("Tuto");
+    }
+
     public void QuitGame()
     {
         Application.Quit();
