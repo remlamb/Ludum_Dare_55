@@ -27,8 +27,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2397179124327452939}
   - {fileID: 1652005835859499139}
@@ -142,6 +142,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Deamon3 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1113088335497742283, guid: 18ff781d50d709645a3d907e83d95208,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1372904553300045531, guid: 18ff781d50d709645a3d907e83d95208,
         type: 3}

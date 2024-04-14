@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 
@@ -79,6 +80,13 @@ public class PlayerController : MonoBehaviour
 
     private AudioSource source;
 
+
+    [SerializeField] private GameObject GameOverUI;
+    public bool isDead = false;
+
+    [SerializeField] private GameObject transitionManager;
+    [SerializeField] private bool isLastLvl;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -99,6 +107,9 @@ public class PlayerController : MonoBehaviour
         RandomPool(ref monster3Inputs);
 
         source = GetComponent<AudioSource>();
+        GameOverUI.SetActive(false);
+        isDead = false;
+
     }
 
     // Update is called once per frame
@@ -308,6 +319,38 @@ public class PlayerController : MonoBehaviour
         {
             playerCatLifes[i].SetActive(true);
         }
+
+        if (life <= 0)
+        {
+            isDead = true;
+            OnDeath();
+        }
+    }
+
+    public void OnDeath()
+    {
+        if (!isLastLvl)
+        {
+            transitionManager.SetActive(false);
+            GameOverUI.SetActive(true);
+            GameObject[] projectiles = GameObject.FindGameObjectsWithTag("Bird");
+            foreach (GameObject projectile in projectiles)
+            {
+                Destroy(projectile);
+            }
+            StartCoroutine(returnToMenu());
+        }
+        else
+        {
+            SceneManager.LoadScene("GoodEnding");
+        }
+    }
+
+    IEnumerator returnToMenu()
+    {
+
+        yield return new WaitForSeconds(1.8f);
+        SceneManager.LoadScene("MainMenu");
     }
 
 }

@@ -17,6 +17,14 @@ public class GravityManager : MonoBehaviour
         
     }
 
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        //if (collision.gameObject.tag != "Ground")
+        //{
+        //    DeactiveGravity();
+        //}
+    }
+
     public void ActiveGravity()
     {
         rb.simulated = true;

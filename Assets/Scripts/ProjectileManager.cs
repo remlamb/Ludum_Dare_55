@@ -32,6 +32,10 @@ public class EnemyManager : MonoBehaviour
     private bool is10sPlayer = false;
 
     private float warningTimer;
+
+    private AudioSource eagleSource;
+
+    private PlayerController playerController;
     // Start is called before the first frame update
     void Start()
     {
@@ -41,6 +45,8 @@ public class EnemyManager : MonoBehaviour
         playerGO = GameObject.FindGameObjectWithTag("Player");
 
         OnStartWarning.SetActive(true);
+        eagleSource = gameObject.GetComponent<AudioSource>();
+        playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
     }
 
     // Update is called once per frame
@@ -57,6 +63,7 @@ public class EnemyManager : MonoBehaviour
         {
             OnStartWarning.SetActive(false);
             warningTimer = 0.0f;
+            eagleSource.Stop();
         }
 
         if (timerSetup > setupTime)
@@ -69,20 +76,27 @@ public class EnemyManager : MonoBehaviour
                     source.Play();
                 }
 
-                StartCoroutine(InstantiateNewProjectile());
-                //TODO
-                //currentEnemy.transform.LookAt(playerGO.transform);
-                timer = 0.0f;
+                if (!playerController.isDead)
+                {
+                    StartCoroutine(InstantiateNewProjectile());
+                    //TODO
+                    //currentEnemy.transform.LookAt(playerGO.transform);
+                    timer = 0.0f;
+                }
             }
             TextTimer.SetActive(false);
         }
         else
         {
-            if(timerSetup > 25.0f && !is10sPlayer)
+            if(timerSetup > 15.0f && !is10sPlayer)
             {
                 OnStartWarning.SetActive(true);
                 OnStartWarning.GetComponentInChildren<TextMeshProUGUI>().text = "5s Before Disaster";
                 is10sPlayer = true;
+                if (!eagleSource.isPlaying)
+                {
+                    eagleSource.Play();
+                }
             }
         }
     }
