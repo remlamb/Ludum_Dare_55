@@ -175,7 +175,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 1309919746822354045}
-  speed: 2
+  speed: 3.8
   playerGO: {fileID: 0}
   isMoving: 0
   playerController: {fileID: 0}

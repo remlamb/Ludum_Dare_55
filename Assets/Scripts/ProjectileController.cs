@@ -27,11 +27,21 @@ public class ProjectileController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //moving a projectile
+        ////moving a projectile
+        //if (isMoving)
+        //{
+        //    Vector3 newPosition = Vector3.Lerp(transform.position, playerGO.transform.position, speed * Time.deltaTime);
+        //    rb.MovePosition(newPosition);
+        //}
+
         if (isMoving)
         {
-            Vector3 newPosition = Vector3.Lerp(transform.position, playerGO.transform.position, speed * Time.deltaTime);
-            rb.MovePosition(newPosition);
+            Vector3 direction = (playerGO.transform.position - transform.position).normalized;
+            rb.velocity = direction * speed;
+        }
+        else
+        {
+            rb.velocity = Vector3.zero;
         }
     }
 

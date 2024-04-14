@@ -116,7 +116,7 @@ public class PlayerController : MonoBehaviour
         if (currentGameState == GameState.Summoning)
         {
             inputSummon newInput = new inputSummon();
-            if (input.isSwipingDown || Input.GetKeyUp(KeyCode.DownArrow))
+            if (input.isSwipingDown || Input.GetKeyUp(KeyCode.DownArrow) || Input.GetKeyUp(KeyCode.S))
             {
                 newInput.isSwipingLeft = false;
                 newInput.isSwipingRight = false;
@@ -124,7 +124,7 @@ public class PlayerController : MonoBehaviour
                 newInput.isSwipingDown = true;
                 inputsSummon.Add(newInput);
             }
-            if (input.isSwipingLeft || Input.GetKeyUp(KeyCode.LeftArrow))
+            if (input.isSwipingLeft || Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.A))
             {
 
                 newInput.isSwipingLeft = true;
@@ -133,7 +133,7 @@ public class PlayerController : MonoBehaviour
                 newInput.isSwipingDown = false;
                 inputsSummon.Add(newInput);
             }
-            if (input.isSwipingRight || Input.GetKeyUp(KeyCode.RightArrow))
+            if (input.isSwipingRight || Input.GetKeyUp(KeyCode.RightArrow) || Input.GetKeyUp(KeyCode.D))
             {
 
                 newInput.isSwipingLeft = false;
@@ -142,7 +142,7 @@ public class PlayerController : MonoBehaviour
                 newInput.isSwipingDown = false;
                 inputsSummon.Add(newInput);
             }
-            if (input.isSwipingUp || Input.GetKeyUp(KeyCode.UpArrow))
+            if (input.isSwipingUp || Input.GetKeyUp(KeyCode.UpArrow) || Input.GetKeyUp(KeyCode.W))
             {
 
                 newInput.isSwipingLeft = false;
