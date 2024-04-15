@@ -88,6 +88,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private bool isLastLvl;
     private Vector3 originalCamPos;
 
+    private float timerInputPlacing;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -112,6 +114,7 @@ public class PlayerController : MonoBehaviour
         isDead = false;
 
         originalCamPos = Camera.main.transform.position;
+        timerInputPlacing = 0.0f;
     }
 
     // Update is called once per frame
@@ -241,8 +244,11 @@ public class PlayerController : MonoBehaviour
     {
         if (currentGameState == GameState.Placing)
         {
+
             //TODO HERE IS THE CHANGE
-            if (Input.GetMouseButtonUp(0))
+            timerInputPlacing += Time.deltaTime;
+
+            if (Input.GetMouseButtonUp(0) && timerInputPlacing >= 0.1f)
             {
                 choosenPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 choosenPos.z = gameObject.transform.position.z;
@@ -260,6 +266,7 @@ public class PlayerController : MonoBehaviour
                 {
                     //Debug.Log("Take A deamon");
                 }
+                timerInputPlacing = 0.0f;
             }
         }
     }
